@@ -28,4 +28,9 @@
 
 ## Segmentation Task — U-Net
 
-*To be filled in after training completes.*
+**Training config:** 30 epochs, batch size 32, lr 1e-4 (Adam + CosineAnnealingLR)
+
+| Metric | Value |
+|--------|-------|
+| Test Dice | 0.8318 |
+| Test IoU | 0.7421 |
