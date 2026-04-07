@@ -6,10 +6,16 @@ This project uses the [Kvasir Dataset for Classification and Segmentation](https
 
 ### Download via Kaggle CLI
 
-Make sure you have the Kaggle API configured (`~/.kaggle/kaggle.json`), then run:
+Go to [Kaggle Account Settings](https://www.kaggle.com/settings) → API → Create New Token, then copy the generated `username` and `key` values and export them as environment variables:
 
 ```bash
-#!/bin/bash
+export KAGGLE_USERNAME=your_username
+export KAGGLE_KEY=your_key
+```
+
+Then download the dataset:
+
+```bash
 kaggle datasets download abdallahwagih/kvasir-dataset-for-classification-and-segmentation
 ```
 
