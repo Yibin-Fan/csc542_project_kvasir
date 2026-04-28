@@ -34,3 +34,27 @@
 |--------|-------|
 | Test Dice | 0.8318 |
 | Test IoU | 0.7421 |
+
+---
+
+## Multi-task Task — Shared ResNet-34 Encoder
+
+**Training config:** 30 epochs, classification batch size 32, segmentation batch size 8, lr 1e-4 (Adam + CosineAnnealingLR), ImageNet pretrained ResNet-34 encoder, classification loss weight `lambda_cls=0.5`
+
+| Metric | Value |
+|--------|-------|
+| Parameters | 24,455,689 |
+| Best Combined Val Score | 1.8030 (Epoch 20: val acc 0.9133, val Dice 0.8897) |
+| Test Classification Accuracy | 89.50% |
+| Test Segmentation Dice | 0.8744 |
+| Test Segmentation IoU | 0.8072 |
+
+### Comparison
+
+| Metric | Baseline | Multi-task | Change |
+|--------|----------|------------|--------|
+| Classification Accuracy | 93.00% recorded baseline / 92.17% rerun | 89.50% | Lower |
+| Segmentation Dice | 0.8318 | 0.8744 | +0.0426 |
+| Segmentation IoU | 0.7421 | 0.8072 | +0.0651 |
+
+The multi-task model improved segmentation performance but reduced classification accuracy. The stronger pretrained shared encoder likely helped the mask decoder, while the shared optimization objective and `lambda_cls=0.5` may have underweighted classification relative to the dense segmentation loss.
